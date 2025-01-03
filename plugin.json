@@ -4,5 +4,5 @@
     "name": "dwmx",
     "description": "Enable custom window backdrops on supporting themes.",
     "backend": "src",
-    "frontend": "utils"
+    "frontend": "util"
 }
