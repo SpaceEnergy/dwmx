@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "millennium-ttc --build dev",
-    "build": "millennium-ttc --build prod"
+    "build": "exit 1"
   },
   "type": "module",
   "name": "dwmx",
