@@ -1,16 +1,17 @@
 {
   "scripts": {
-    "dev": "millennium-lib --build dev",
-    "build": "millennium-lib --build prod"
+    "dev": "millennium-ttc --build dev",
+    "build": "millennium-ttc --build prod"
   },
   "type": "module",
-  "name": "millennium-plugin",
+  "name": "dwmx",
   "version": "1.0.0",
-  "description": "a template plugin for millennium",
+  "description": "A better window manager for Steam.",
   "main": "./frontend/index.jsx",
-  "author": "Millennium",
+  "author": "shdwmtr",
   "license": "MIT",
   "dependencies": {
-    "millennium-lib": "^3.4.8"
+    "@steambrew/client": "^4.2.1",
+    "@steambrew/ttc": "^1.0.5"
   }
 }
