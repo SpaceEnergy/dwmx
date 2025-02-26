@@ -1,3 +1,5 @@
+import { ConfirmModal, pluginSelf, showModal } from "@steambrew/client";
+
 type OriginalOpenFunction = (url?: string, target?: string, features?: string, replace?: boolean) => Window | null;
 const originalOpen: OriginalOpenFunction = window.open;
 
@@ -26,6 +28,9 @@ window.open = function (url?: string, target?: string, features?: string, replac
     return originalOpen(url, target, features, replace);
 };
 
+const ShowAlertMessage = (strTitle: string, strMessage: string) => showModal(<ConfirmModal strTitle={strTitle} strDescription={strMessage} />);
+
 export default async function PluginMain() {
-    console.log('Bootstrapping DWMX');
+    console.log('Starting DWMX Frontend hooks');
+    pluginSelf.ShowAlertMessage = ShowAlertMessage;
 }

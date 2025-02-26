@@ -1,4 +1,5 @@
 import ctypes
+from xplatform.platform_check     import*
 from proto.set_window_attribute   import*
 from proto.set_window_composition import*
 
@@ -21,7 +22,9 @@ def EnableRoundedCorners(target):
     value = ctypes.c_int(DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUND.value)
     DwmSetWindowAttribute(target, DWMWA_WINDOW_CORNER_PREFERENCE, ctypes.byref(value), ctypes.sizeof(value))
 
-
 def PatchWindowContext(hwnd):
-    EnableRoundedCorners(hwnd)
-    EnableBlurBehind(hwnd)
+    if IS_CORNER_PREFERENCE_COMPATIBLE:
+        EnableRoundedCorners(hwnd)
+
+    if IS_BLUR_BEHIND_COMPATIBLE:
+        EnableBlurBehind(hwnd)

@@ -6,6 +6,7 @@ from proto.set_window_event_hook import*
 from proto.window_com_proto      import*
 from proto.com_initialize        import*
 from proto.win_event_proc_type   import*
+from xplatform.platform_check    import*
 
 WINEVENT_OUTOFCONTEXT = 0x0000
 PROCESS_LOGGER        = PluginUtils.Logger("dwmx")
@@ -13,9 +14,11 @@ PROCESS_LOGGER        = PluginUtils.Logger("dwmx")
 class Plugin:
 
     def _front_end_loaded(self):
-        pass
+        if not self.WINDOWS_VERSION_NOT_SUPPORTED:
+            print("Frontend loaded, with error")
+            Millennium.call_frontend_method("ShowAlertMessage", params=["Aw snap...", "It seems your windows version is incompatible with this plugin. You must be running Windows 11 or newer."])
 
-        
+
     def GetProcessName(self, processId):
         try:
             return psutil.Process(processId).name()
@@ -65,8 +68,11 @@ class Plugin:
                 user32.DispatchMessageW(msg)
 
         PROCESS_LOGGER.log("Closed message listener...")
+        
 
     def _load(self):    
+        self.WINDOWS_VERSION_NOT_SUPPORTED = not IS_CORNER_PREFERENCE_COMPATIBLE or not IS_BLUR_BEHIND_COMPATIBLE
+
         CoInitialize(0) 
         PROCESS_LOGGER.log("Starting DWMX backend...")
         
@@ -75,6 +81,7 @@ class Plugin:
 
         self.mainThread.start()
         Millennium.ready()
+
 
     def _unload(self):
         PROCESS_LOGGER.log("unloading dwmx...")
