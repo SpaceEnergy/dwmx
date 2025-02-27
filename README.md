@@ -1,4 +1,4 @@
-Extended Desktop Window Manager (DWMX) for Steam on Windows 11
+## Extended Desktop Window Manager (DWMX)
 
 This plugin extends Steams window support to add other Windows 11 features like: 
 
@@ -10,6 +10,11 @@ This plugin extends Steams window support to add other Windows 11 features like:
 * Acrylic Window Backdrops
     * Supported themes can take advantage of the acrylic window backdrop
         * **NOTE**: Steam and other themes DO NOT support this feature out of the box, they must implement it.
+
+
+## Supported Themes
+
+* [Fluenty](https://steambrew.app/fluenty-steam)
 
 
 ## Roadmap
