@@ -14,7 +14,7 @@ PROCESS_LOGGER        = PluginUtils.Logger("dwmx")
 class Plugin:
 
     def _front_end_loaded(self):
-        if not self.WINDOWS_VERSION_NOT_SUPPORTED:
+        if self.WINDOWS_VERSION_NOT_SUPPORTED:
             print("Frontend loaded, with error")
             Millennium.call_frontend_method("ShowAlertMessage", params=["Aw snap...", "It seems your windows version is incompatible with this plugin. You must be running Windows 11 or newer."])
 
