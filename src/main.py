@@ -9,7 +9,6 @@ from proto.win_event_proc_type   import*
 from xplatform.platform_check    import*
 
 WINEVENT_OUTOFCONTEXT = 0x0000
-PROCESS_LOGGER        = PluginUtils.Logger("dwmx")
 
 class Plugin:
 
